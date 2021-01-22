@@ -8,10 +8,23 @@
         <i class="main-icons password-eye far fa-eye" id="togglePassword"></i>
         <button class="btn-log-in" type="submit">Create my account</button>
       </form>
-      <p class="paragraph1">or <i class="login-btn"> login </i> with</p>
+
+      <!--router-->
+      <p class="paragraph1">or
+        <i class="login-btn">
+          <router-link :to="{ name: 'log' }">login</router-link>
+        </i> with
+      </p>
+      <div>
+        <router-view></router-view>
+      </div>
+
     </div>
   </div>
 </template>
+
+
+
 
 
 

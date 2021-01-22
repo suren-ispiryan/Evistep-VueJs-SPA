@@ -31,9 +31,40 @@ new Vue({
 
 
 
+
+
+
+
     /*connecting router*/
+/*
+
+import SignIn from "@/components/SignIn/SignIn";
+import Login from "@/components/Login/Login";
+
 
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+new VueRouter({
+  mode: 'history',
+  routes: [
+    { path: '/',
+      name: 'sign',
+      component: SignIn
+    },
+    { path: '/logIn',
+      name: 'log',
+      component: Login
+    }
+  ]
+})
+
+
+// eslint-disable-next-line no-unused-vars
+const router = new Vue({
+  el: '#app',
+  components: { app },
+  render: h => h(App)
+})
+*/
 

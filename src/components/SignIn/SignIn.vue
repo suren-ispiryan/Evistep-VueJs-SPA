@@ -48,7 +48,7 @@
 
 
 <script>
-import SignUpForm from './SignInComponent /SignUpForm.vue'
+import SignUpForm from './SignInComponent/SignUpForm'
 
 export default {
   name: "SignInPage", // component
