@@ -27,8 +27,8 @@
 
 
 
- <style>
- #app {
+<style>
+#app {
 
- }
- </style>
+}
+</style>

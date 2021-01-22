@@ -6,6 +6,7 @@ new Vue({
 }).$mount('#app')
 
 
+
     /*connecting bootstrap to VueJs*/
 
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
@@ -18,6 +19,7 @@ new Vue({
 });
 
 
+
     /*connecting icon */
 
 Vue.config.productionTip = false
@@ -26,4 +28,12 @@ new Vue({
   el: '#app',
   render: h => h(App)
 })
+
+
+
+    /*connecting router*/
+
+import VueRouter from 'vue-router'
+Vue.use(VueRouter)
+
 
