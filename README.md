@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # vue-spa-app
+=======
+# demo-app
+>>>>>>> 2561f0e82801705d60548c4473893818cad9e912
 
 ## Project setup
 ```

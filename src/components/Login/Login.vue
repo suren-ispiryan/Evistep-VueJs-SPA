@@ -1,11 +1,6 @@
 <template>
   <div id="app" class="main">
 
-<<<<<<< HEAD
-    <!--Connecting icons-->
-    <link rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-
     <div class="row a">
       <div class="col-md-12 general-element">
 
@@ -15,32 +10,11 @@
           <div class="col-md-2"></div>
           <div class="col-md-8">
             <b><p class="sign-up-heading">Welcome to VueJs</p></b>
-=======
-    <div class="row a">
-      <div class="col-md-12 general-element">
-
-<!--Heading-->
-
-        <div class="row">
-          <div class="col-md-2"></div>
-            <div class="col-md-8">
-              <b><p class="sign-up-heading">Welcome to VueJs</p></b>
->>>>>>> 2561f0e82801705d60548c4473893818cad9e912
           </div>
           <div class="col-md-2"></div>
         </div>
 
-<<<<<<< HEAD
-        <SignUpForm/>
-        <!--    <LoginForm/>-->
-
-<!--        <router-view></router-view>-->
-=======
-
-        <SignUpForm/>
-
-
->>>>>>> 2561f0e82801705d60548c4473893818cad9e912
+        <LoginForm/>
 
         <div class="row a">
           <div class="icons-box">
@@ -66,84 +40,32 @@
     </div>
 
   </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 2561f0e82801705d60548c4473893818cad9e912
 </template>
 
 
 
-<<<<<<< HEAD
-
 <script>
-import SignUpForm from './SigninComponents/SignUpForm'
-/*
-import LoginForm from './SigninComponents/LoginForm'
-*/
+import LoginForm from './LogInComponent/LoginForm.vue'
 
 export default {
-  name: 'SignIn',
-  components: {
-   /* LoginForm,*/
-    SignUpForm
-  }
-}
-
-/* new VueRouter({
-   routes: [
-     {
-       path: '/components/SignIn/SignIn.vue',
-       component: SignIn,
-       children: [
-         {
-           // при совпадении пути с шаблоном /user/:id/profile
-           // в <router-view> компонента User будет показан UserProfile
-           path: 'signUpForm',
-           component: SignUpForm
-         },
-         {
-           // при совпадении пути с шаблоном /user/:id/profile
-           // в <router-view> компонента User будет показан UserProfile
-           path: 'signUpForm',
-           component: LoginForm
-         }
-       ]
-     }
-   ]
- })*/
-=======
-<script>
-import SignUpForm from './SignInComponent/SignUpForm'
-
-export default {
-  name: "SignInPage", // component
+  name: 'LoginPage', // component
   props: {
     msg: String
   },
   components: {
-    SignUpForm
+    LoginForm
   }
 }
->>>>>>> 2561f0e82801705d60548c4473893818cad9e912
 </script>
 
 
 
-<<<<<<< HEAD
-
-
-=======
 <!-- Add "scoped" attribute to limit CSS to this component only -->
->>>>>>> 2561f0e82801705d60548c4473893818cad9e912
-<style scoped>
+<style scoped >
 *{
   color: black;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 2561f0e82801705d60548c4473893818cad9e912
 .main{
   width: 100vw;
   height: 100vh;
@@ -171,10 +93,7 @@ export default {
   font-family: ALEGREYA;
   font-style: italic;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 2561f0e82801705d60548c4473893818cad9e912
 .row-icons{
   display: flex;
   justify-content: center;
@@ -185,10 +104,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-<<<<<<< HEAD
-=======
 
->>>>>>> 2561f0e82801705d60548c4473893818cad9e912
 }
 .icons-box{
   display: flex;
@@ -234,9 +150,5 @@ export default {
   justify-content: center;
   align-items: center;
 }
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 2561f0e82801705d60548c4473893818cad9e912
 </style>

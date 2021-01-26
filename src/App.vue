@@ -5,6 +5,7 @@
     <link rel="stylesheet"
           href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
+<<<<<<< HEAD
     <router-view></router-view>
 
     <SignIn/>
@@ -56,3 +57,34 @@ export default {
 <style scoped>
 
 </style>
+=======
+<!-- <LoginPage/>-->
+     <SignInPage/>
+
+  </div>
+ </template>
+
+
+ <script>
+/* import LoginPage from './components/Login/Login.vue'*/
+ import SignInPage from './components/SignIn/SignIn.vue'
+
+ export default {
+   name: 'App',
+   components: {
+     /*LoginPage,*/
+     SignInPage
+   }
+ }
+
+
+ </script>
+
+
+
+<style>
+#app {
+
+}
+</style>
+>>>>>>> 2561f0e82801705d60548c4473893818cad9e912
