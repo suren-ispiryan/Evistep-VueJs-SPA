@@ -1,18 +1,23 @@
 <template>
   <div class="row log">
     <div class="col-md-12">
-      <form class="form" action="" method="post">
-        <input class="input" type="email" name="email" placeholder="Email">
-        <input class="input" type="password" name="pass" placeholder="Password" id="passwordlog1">
-        <i class="main-icons password-eye far fa-eye" id="togglePasswordlog1"></i>
-        <button class="btn-log-in" type="submit">Login my account</button>
-      </form>
+      <div class="form" action="" method="">
+        <input class="input" v-model="email" name="email" placeholder="Email">
+        <input class="input" v-model="password" name="pass" placeholder="Password" id="password">
+<!--        <button type="password" @click="switchVisibility" class="password-eye"><i class="fas fa-eye"></i></button>-->
+        <router-link to="/UserPageComponent">
+          <button class="btn-log-in" @click="submit()">Login my account</button>
+        </router-link>
+      </div>
       <p class="paragraph1">
-        <i class="login-btn">
-          <router-link :to="{ name: 'SignUpForm' }">SignUp</router-link>
-        </i>or
-
-        <i class="login-btn"> login </i> with
+        <b class="dark">
+          <i class="login-btn">
+             <router-link to="/">SignUp</router-link>
+          </i>
+          or
+          <i class="login-btn"> login </i>
+          with
+        </b>
       </p>
     </div>
   </div>
@@ -21,29 +26,52 @@
 
 <script>
 export default {
-  name: "LoginForm"
+  name: "LoginForm",
+
+  data() {
+    return {
+      email: "",
+      password: "",
+      passwordFieldType: 'password'
+    }
+  },
+
+  methods: {
+    submit() {
+      let userdata = JSON.parse(localStorage.getItem('Users'));
+      let userArray = [];
+      for(let i in userdata) {
+        userArray.push(userdata[i]);
+      }
+
+      for(let j in userArray) {
+        if (userArray[j]["mail"].includes(this.email) && userArray[j]["password"].includes(this.password)) {
+          console.log("mail exist");
+          //window.location.src = 'UserPageComponent';
+        }
+        else {
+          console.log("mail is not exist or no password");
+        }
+      }
+    }
+
+  }
+
+
+
+ /* switchVisibility() {
+      this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password'
+    }*/
+
 }
 
-window.onload = function() {
-
-  /*Shoe/Hide password*/
-  const togglePassword = document.querySelector('#togglePasswordlog1');
-  const password = document.querySelector('#passwordlog1');
-  togglePassword.addEventListener('click', function () {
-    // toggle the type attribute
-    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-    password.setAttribute('type', type);
-    // toggle the eye slash icon
-    this.classList.toggle('fa-eye-slash');
-  });
-
-}
 
 </script>
 
 
 
 <style scoped>
+
 /*form*/
 .form{
   display: flex;
@@ -75,21 +103,27 @@ window.onload = function() {
   color: black;
   font-size: 14px;
 }
-.password-eye{
+.password-eye {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
   cursor: pointer;
   position: absolute;
-  bottom: 60%;
+  bottom: 55%;
   right: 15%;
-  font-size: 18px !important;
+  font-size: 12px !important;
+  border-radius: 100%;
 }
 .btn-log-in{
   border: none;
-  width: 80%;
-  margin-top: 10%;
+  margin-top: 50%;
   background-color: rgba(255,255,255,0.8);
   outline: none;
   border-radius: 40px;
   height: 50px;
+  width: 100%;
 }
 .login-btn{
   color: cornflowerblue;
@@ -100,5 +134,9 @@ window.onload = function() {
   margin-top: 5%;
   text-align: center;
   font-size: 15px;
+}
+.dark{
+  font-size: 14px;
+  text-shadow: 1px 1px black !important;
 }
 </style>

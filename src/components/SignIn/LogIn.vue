@@ -1,18 +1,24 @@
 <template>
   <div id="app" class="main">
 
+<!--========================================== Connecting icons =======================================-->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
     <div class="row a">
       <div class="col-md-12 general-element">
-
-        <!--Heading-->
 
         <div class="row">
           <div class="col-md-2"></div>
           <div class="col-md-8">
-            <b><p class="sign-up-heading">Welcome to VueJs</p></b>
+            <b>
+              <p class="sign-up-heading">Welcome to VueJs</p>
+            </b>
           </div>
           <div class="col-md-2"></div>
         </div>
+
+
 
         <LoginForm/>
 
@@ -38,20 +44,17 @@
 
       </div>
     </div>
-
   </div>
 </template>
 
 
 
+
 <script>
-import LoginForm from './LogInComponent/LoginForm.vue'
+import LoginForm from './SigninComponents/LoginForm'
 
 export default {
-  name: 'LoginPage', // component
-  props: {
-    msg: String
-  },
+  name: 'LogIn',
   components: {
     LoginForm
   }
@@ -60,12 +63,12 @@ export default {
 
 
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped >
+
+
+<style scoped>
 *{
   color: black;
 }
-
 .main{
   width: 100vw;
   height: 100vh;
@@ -82,18 +85,17 @@ export default {
   box-shadow: 0 0 20px 1px #000000;
   width: 30vw;
   height: 90vh;
-  background-color: transparent;
+  background-color: rgba(0,0,0,0.2);
 }
 /*sign up heading*/
 .sign-up-heading{
   margin-top: 15%;
-  font-size: 32px;
+  font-size: 24px;
   color: darkslateblue;
   text-align: center;
   font-family: ALEGREYA;
   font-style: italic;
 }
-
 .row-icons{
   display: flex;
   justify-content: center;
@@ -104,7 +106,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 .icons-box{
   display: flex;
@@ -150,5 +151,6 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
 
 </style>

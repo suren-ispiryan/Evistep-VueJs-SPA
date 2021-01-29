@@ -1,27 +1,25 @@
 <template>
   <div id="app" class="main">
 
-    <!--Connecting icons-->
-    <link rel="stylesheet"
-          href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<!--========================================== Connecting icons =======================================-->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
     <div class="row a">
       <div class="col-md-12 general-element">
 
-        <!--Heading-->
-
         <div class="row">
           <div class="col-md-2"></div>
           <div class="col-md-8">
-            <b><p class="sign-up-heading">Welcome to VueJs</p></b>
+            <b>
+              <p class="sign-up-heading">Welcome to VueJs</p>
+            </b>
           </div>
           <div class="col-md-2"></div>
         </div>
 
-        <SignUpForm/>
-        <!--    <LoginForm/>-->
 
-<!--        <router-view></router-view>-->
+            <SignUpForm/>
 
         <div class="row a">
           <div class="icons-box">
@@ -45,9 +43,7 @@
 
       </div>
     </div>
-
   </div>
-
 </template>
 
 
@@ -55,40 +51,13 @@
 
 <script>
 import SignUpForm from './SigninComponents/SignUpForm'
-/*
-import LoginForm from './SigninComponents/LoginForm'
-*/
 
 export default {
   name: 'SignIn',
   components: {
-   /* LoginForm,*/
     SignUpForm
   }
 }
-
-/* new VueRouter({
-   routes: [
-     {
-       path: '/components/SignIn/SignIn.vue',
-       component: SignIn,
-       children: [
-         {
-           // при совпадении пути с шаблоном /user/:id/profile
-           // в <router-view> компонента User будет показан UserProfile
-           path: 'signUpForm',
-           component: SignUpForm
-         },
-         {
-           // при совпадении пути с шаблоном /user/:id/profile
-           // в <router-view> компонента User будет показан UserProfile
-           path: 'signUpForm',
-           component: LoginForm
-         }
-       ]
-     }
-   ]
- })*/
 </script>
 
 
@@ -115,12 +84,12 @@ export default {
   box-shadow: 0 0 20px 1px #000000;
   width: 30vw;
   height: 90vh;
-  background-color: transparent;
+  background-color: rgba(0,0,0,0.2);
 }
 /*sign up heading*/
 .sign-up-heading{
   margin-top: 15%;
-  font-size: 32px;
+  font-size: 24px;
   color: darkslateblue;
   text-align: center;
   font-family: ALEGREYA;
