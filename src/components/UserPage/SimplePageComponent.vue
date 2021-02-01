@@ -1,23 +1,21 @@
 <template>
   <div id="app">
     <h1 class="heading">Todo application</h1>
-    <AddTodo @add-todo="AddTodo" />
+    <SimpleAddTodo /><!--@add-todo="AddTodo"-->
     <hr>
-    <TodoList v-if="todos.length" v-bind:todos="todos" @remove-todo="removeTodo"/>
+    <SimpleTodoList v-if="todos.length" v-bind:todos="todos" @remove-todo="removeTodo"/>
     <p v-else>No todos!</p>
   </div>
 </template>
 
-
-
 <script>
-import TodoList from './TodoList.vue'
-import AddTodo from './AddTodo.vue'
+import SimpleTodoList from './SimpleTodoList.vue'
+import SimpleAddTodo from './SimpleAddTodo.vue'
 export default{
   name: 'UserPageComponent',
   data() {
     return {
-     todos: [
+      todos: [
         /*{id: 1, title: "action1", completed: false},
         {id: 2, title: "action2", completed: false},
         {id: 3, title: "action3", completed: false}*/
@@ -25,22 +23,19 @@ export default{
     }
   },
   methods: {
-    removeTodo(id){
+  /*  removeTodo(id){
       this.todos = this.todos.filter(t => t.id !== id)
     },
     AddTodo(todo){
       this.todos.push(todo)
-    }
+    }*/
   },
   components:{
-    TodoList,
-    AddTodo
+    SimpleTodoList,
+    SimpleAddTodo
   }
 }
 </script>
-
-
-
 
 <style scoped>
 #app{

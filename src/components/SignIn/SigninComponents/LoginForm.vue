@@ -3,17 +3,13 @@
     <div class="col-md-12">
       <div class="form" action="" method="">
         <input class="input" v-model="email" name="email" placeholder="Email">
-        <input class="input" v-model="password" name="pass" placeholder="Password" id="password">
-<!--        <button type="password" @click="switchVisibility" class="password-eye"><i class="fas fa-eye"></i></button>-->
-        <router-link to="/UserPageComponent">
+        <input class="input" v-model="password" :type="passwordFieldType" name="pass" placeholder="Password" id="password">
+        <button type="password" @click="switchVisibility" class="password-eye"><i class="fas fa-eye"></i></button>
           <button class="btn-log-in" @click="submit()">Login my account</button>
-        </router-link>
       </div>
       <p class="paragraph1">
         <b class="dark">
-          <i class="login-btn">
-             <router-link to="/">SignUp</router-link>
-          </i>
+          <router-link to="/">SignUp</router-link>
           or
           <i class="login-btn"> login </i>
           with
@@ -38,6 +34,7 @@ export default {
 
   methods: {
     submit() {
+console.log('test')
       let userdata = JSON.parse(localStorage.getItem('Users'));
       let userArray = [];
       for(let i in userdata) {
@@ -45,23 +42,32 @@ export default {
       }
 
       for(let j in userArray) {
-        if (userArray[j]["mail"].includes(this.email) && userArray[j]["password"].includes(this.password)) {
-          console.log("mail exist");
-          //window.location.src = 'UserPageComponent';
+        if (userArray[j]["mail"].includes(this.email) && userArray[j]["password"].includes(this.password)
+        && userArray[j]["mail"] == "admin@admin.com" && userArray[j]["password"] == "password"
+        && this.email !== "" && this.password !== "" ) {
+          console.log("Admin mail exist");
+          this.$router.push('/AdminPage')
+        }
+        else if ( userArray[j]["mail"].includes(this.email) && userArray[j]["password"].includes(this.password)
+        && this.email !== "" && this.password !== "" ) {
+          console.log("User mail exist");
+          this.$router.push('/simplePage')
         }
         else {
           console.log("mail is not exist or no password");
         }
       }
+    },
+
+    switchVisibility() {
+      this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password'
     }
 
   }
 
 
 
- /* switchVisibility() {
-      this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password'
-    }*/
+
 
 }
 
@@ -111,7 +117,7 @@ export default {
   width: 30px;
   cursor: pointer;
   position: absolute;
-  bottom: 55%;
+  bottom: 65%;
   right: 15%;
   font-size: 12px !important;
   border-radius: 100%;

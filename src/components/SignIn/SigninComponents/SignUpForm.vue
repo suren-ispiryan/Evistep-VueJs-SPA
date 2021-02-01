@@ -78,8 +78,6 @@ export default {
       else {//TODO show errors
         console.log('inValid');
       }
-
-
     },
 
     switchVisibility() {

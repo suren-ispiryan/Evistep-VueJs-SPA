@@ -20,6 +20,7 @@ import Router from 'vue-router'
 import SignIn from "@/components/SignIn/SignIn";
 import LogIn from "@/components/SignIn/LogIn";
 import UserPageComponent from "@/components/UserPage/UserPageComponent";
+import SimplePageComponent from "@/components/UserPage/SimplePageComponent";
 Vue.use(Router)
 
 const router = new Router({
@@ -39,9 +40,14 @@ const router = new Router({
       component: SignIn
     },
     {
-      path: '/UserPage',
+      path: '/AdminPage',
       name: 'UserPageComponent',
       component: UserPageComponent
+    },
+    {
+      path: '/simplePage',
+      name: 'SimplePageComponent',
+      component: SimplePageComponent
     }
   ]
 })
