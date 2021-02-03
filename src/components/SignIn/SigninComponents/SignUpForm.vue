@@ -2,15 +2,15 @@
   <div class="row log" id="ex1">
     <div class="col-md-12">
       <div class="form" action="" method="">
-        <input class="input" v-model="firstName" placeholder="Name">
-        <input class="input" v-model="lastName" placeholder="Surname">
-        <input class="input" v-model="email" type="email" name="email" placeholder="Email" id="mail">
-        <input class="input" v-model="password" :type="passwordFieldType" placeholder="Password">
-        <button type="password" @click="switchVisibility" class="password-eye"><i class="fas fa-eye"></i></button>
-        <input class="input" v-model="passCheck" :type="passwordFieldType" name="repeatPass" placeholder="Confirm Password" id="confirmPassword">
+        <input class="input form-control" v-model="firstName" placeholder="Name">
+        <input class="input form-control" v-model="lastName" placeholder="Surname">
+        <input class="input form-control" v-model="email" type="email" name="email" placeholder="Email" id="mail">
+        <input class="input form-control" v-model="password" :type="passwordFieldType" placeholder="Password">
+        <button type="password" @click="switchVisibility" class="password-eye btn "><i class="fas fa-eye"></i></button>
+        <input class="input form-control" v-model="passCheck" :type="passwordFieldType" name="repeatPass" placeholder="Confirm Password" id="confirmPassword">
 
         <div>
-          <button id="btn-sign-in" @click="submit()">Create an account</button>
+          <button id="btn-sign-in" type="button" class="btn btn-primary" @click="submit()">Create an account</button>
         </div>
       </div>
       <p class="paragraph1">
@@ -19,7 +19,6 @@
           <i class="login-btn">
             <router-link to="/Login">login</router-link>
           </i>
-          with
         </b>
       </p>
     </div>
@@ -102,8 +101,8 @@ export default {
 .input {
   background-color: transparent;
   border: none;
-  width: 80%;
-  margin-top: 5%;;
+  width: 90%;
+  margin-top: 2%;;
   border-bottom: darkslateblue 1px solid;
   outline: none;
 }
@@ -132,24 +131,20 @@ input, textarea {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 30px;
-  width: 30px;
-  cursor: pointer;
+  height: 70px;
+  width: 70px;
   position: absolute;
-  bottom: 50%;
-  right: 15%;
-  font-size: 12px !important;
+  border: none;
+  bottom: 47%;
+  right: 8%;
+  font-size: 20px !important;
   border-radius: 100%;
 }
 
 #btn-sign-in {
-  border: none;
-  width: 100%;
-  margin-top: 10%;
-  background-color: rgba(255, 255, 255, 0.8);
-  outline: none;
-  border-radius: 40px;
-  height: 50px;
+  margin-top: 30%;
+  width: 100% !important;
+  border-radius: 10px;
 }
 
 .login-btn {

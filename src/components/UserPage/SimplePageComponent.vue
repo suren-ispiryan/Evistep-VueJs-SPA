@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <h1 class="heading">Todo application</h1>
-    <SimpleAddTodo /><!--@add-todo="AddTodo"-->
+    <SimpleAddTodo/>
     <hr>
-    <SimpleTodoList v-if="todos.length" v-bind:todos="todos" @remove-todo="removeTodo"/>
+    <SimpleTodoList v-if="todos.length" v-bind:todos="todos"/>
     <p v-else>No todos!</p>
   </div>
 </template>
@@ -22,14 +22,7 @@ export default{
       ]
     }
   },
-  methods: {
-  /*  removeTodo(id){
-      this.todos = this.todos.filter(t => t.id !== id)
-    },
-    AddTodo(todo){
-      this.todos.push(todo)
-    }*/
-  },
+
   components:{
     SimpleTodoList,
     SimpleAddTodo

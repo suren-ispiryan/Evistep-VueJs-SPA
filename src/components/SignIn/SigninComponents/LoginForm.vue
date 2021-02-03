@@ -2,17 +2,14 @@
   <div class="row log">
     <div class="col-md-12">
       <div class="form" action="" method="">
-        <input class="input" v-model="email" name="email" placeholder="Email">
-        <input class="input" v-model="password" :type="passwordFieldType" name="pass" placeholder="Password" id="password">
-        <button type="password" @click="switchVisibility" class="password-eye"><i class="fas fa-eye"></i></button>
-          <button class="btn-log-in" @click="submit()">Login my account</button>
+        <input class="input form-control" v-model="email" name="email" placeholder="Email">
+        <input class="input form-control" v-model="password" :type="passwordFieldType" name="pass" placeholder="Password" id="password">
+        <button type="password" @click="switchVisibility" class="password-eye btn"><i class="fas fa-eye"></i></button>
+        <button id="btn-log-in" type="button" class="btn btn-primary" @click="submit()">Login</button>
       </div>
       <p class="paragraph1">
         <b class="dark">
-          <router-link to="/">SignUp</router-link>
-          or
-          <i class="login-btn"> login </i>
-          with
+          <router-link to="/">or SignUp</router-link>
         </b>
       </p>
     </div>
@@ -52,6 +49,9 @@ console.log('test')
         && this.email !== "" && this.password !== "" ) {
           console.log("User mail exist");
           this.$router.push('/simplePage')
+
+        // add login's mail
+          localStorage.setItem('JustLogInUser',JSON.stringify([{'mail': this.email}]));
         }
         else {
           console.log("mail is not exist or no password");
@@ -64,10 +64,6 @@ console.log('test')
     }
 
   }
-
-
-
-
 
 }
 
@@ -87,8 +83,8 @@ console.log('test')
 }
 .input{
   border: none;
-  width: 80%;
-  margin-top: 10%;
+  width: 90%;
+  margin-top: 3%;
   background-color: transparent;
   border-bottom: darkslateblue 1px solid;
   outline: none;
@@ -118,22 +114,14 @@ console.log('test')
   cursor: pointer;
   position: absolute;
   bottom: 65%;
-  right: 15%;
-  font-size: 12px !important;
+  right: 10%;
+  font-size: 18px !important;
   border-radius: 100%;
 }
-.btn-log-in{
-  border: none;
-  margin-top: 50%;
-  background-color: rgba(255,255,255,0.8);
-  outline: none;
-  border-radius: 40px;
-  height: 50px;
-  width: 100%;
-}
-.login-btn{
-  color: cornflowerblue;
-  cursor: pointer;
+#btn-log-in{
+  margin-top: 20%;
+  width: 80%;
+  border-radius: 10px;
 }
 .paragraph1{
   color: white;

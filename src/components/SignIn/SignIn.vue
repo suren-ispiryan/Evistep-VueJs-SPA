@@ -21,19 +21,6 @@
 
             <SignUpForm/>
 
-        <div class="row a">
-          <div class="icons-box">
-            <div class="row row-icons">
-
-              <div class="col-md-12 i-container">
-                <span class="icons"> <i class="main-icons fab fa-twitter"></i> </span>
-                <span class="icons"> <i class="main-icons fab fa-facebook-f"></i> </span>
-                <span class="icons"> <i class="main-icons fab fa-instagram"></i> </span>
-              </div>
-
-            </div>
-          </div>
-        </div>
 
         <div class="row login-footer">
           <div class="col-md-12">
@@ -71,8 +58,9 @@ export default {
 .main{
   width: 100vw;
   height: 100vh;
-  background-image: url("../../assets/Login-page-back.jpg");
+  background-image: url("../../assets/9e7b47982ee1b58fef26717182b4b28c.jpg");
   background-size: cover;
+  background-position: BOTTOM;
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
@@ -82,9 +70,10 @@ export default {
   padding: 15px 15px 0 15px;
   -webkit-box-shadow: 0 0 20px 1px #000000;
   box-shadow: 0 0 20px 1px #000000;
-  width: 30vw;
-  height: 90vh;
-  background-color: rgba(0,0,0,0.2);
+  width: 25vw;
+  height: 75vh;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 10px;
 }
 /*sign up heading*/
 .sign-up-heading{
@@ -95,42 +84,17 @@ export default {
   font-family: ALEGREYA;
   font-style: italic;
 }
-.row-icons{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
 .a{
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.icons-box{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.main-icons{
-  color: white;
-  font-size: 24px;
-}
-.icons{
-  margin-top: 20px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 70px;
-  width: 70px;
-  border: darkslateblue 1px solid;
-  border-radius: 100%;
-  margin-left: 5px;
-}
 .login-footer{
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   position:absolute;
   bottom: 0;
-  background-color: darkslateblue;
+  background-color: rgb(3, 90, 252);
   height: 100px;
   width: 100%;
   display: flex;
@@ -145,11 +109,4 @@ export default {
   font-family: ALEGREYA;
   font-style: italic;
 }
-.i-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
 </style>

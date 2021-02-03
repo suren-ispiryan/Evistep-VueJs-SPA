@@ -1,9 +1,8 @@
 <template>
   <form @submit.prevent="onSubmit">
-    <input type="text" v-model="title" placeholder="write a task">
-    <button type="submit" @click="submitInfo()">Create</button>
-    <input type="email" v-model="userMail" placeholder="user Email">
-    <button type="submit" @click="AddTaskToUser()">Add task</button>
+    <input type="text" class="form-control" v-model="title" placeholder="write a task">
+    <input type="email" class="form-control" v-model="userMail" placeholder="user Email">
+    <button type="submit"  @click="submitInfo()" class="btn btn-success ml-4">Add Task</button>
   </form>
 </template>
 
@@ -12,6 +11,7 @@ export default{
   name: 'AddTodo',
   data() {
     return {
+      userMail: '',
       title: ''
     }
   },
@@ -19,22 +19,36 @@ export default{
     mounted() {
       let tasks = localStorage.getItem('tasksList');
       if (!tasks) {
-        localStorage.setItem('tasksList',JSON.stringify([{"title":"title"}]));
+        localStorage.setItem('tasksList',JSON.stringify([{"title":"title","userMail":"userMail"}]));
       }
     },
 
     submitInfo() {
+//put tasks in array
       let allTasks = JSON.parse(localStorage.getItem('tasksList'));
       let tasksArray = [];
-      if (this.title!==""){
+      if (this.title!=="") {
         for (let i in allTasks)
           tasksArray.push(allTasks[i]);
-          let objTasks = {
-            'task': this.title
-          };
-        tasksArray.push(objTasks);
-        localStorage.setItem("tasksList", JSON.stringify(tasksArray));
-        console.log("task added");
+
+//check user in storage
+          let userdata = JSON.parse(localStorage.getItem('Users'));
+          let userArray = [];
+          for (let i in userdata) {
+            userArray.push(userdata[i]); // Users
+          }
+          for (let j in userArray) {
+            if (userArray[j]["mail"].includes(this.userMail) && this.userMail !== "") {
+//Add task
+              let objTasks = {
+                'task': this.title,
+                'userMail': this.userMail
+              };
+              tasksArray.push(objTasks);
+              localStorage.setItem("tasksList", JSON.stringify(tasksArray));
+              console.log("task added");
+            }
+          }
       }
     },
     onSubmit() {

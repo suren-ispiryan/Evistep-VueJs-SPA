@@ -1,7 +1,7 @@
 <template>
-  <form @submit.prevent="onSubmit">
-<!--    <input type="text" v-model="title">-->
-    <button type="submit" @click="submitAnswer()">Submit</button>
+  <form>
+    <button @click="getTodos()" class="btn btn-primary mr-4">Get Todos</button>
+    <button @click="submitAnswers()" class="btn btn-success">Submit</button>
   </form>
 </template>
 
@@ -10,32 +10,55 @@ export default{
   name: 'SimpleAddTodo',
   data() {
     return {
-      title: ''
+      title: '',
     }
   },
+
+  mounted() {
+    //set to a localstorage chosen tasks
+    let ChosenTasks = localStorage.getItem('ChosenTasks');
+    if (!ChosenTasks) {
+      localStorage.setItem( 'ChosenTasks',JSON.stringify([{'tasks':'tasks'}]) );
+    }
+  },
+
   methods: {
-    mounted() {
-      /*let tasks = localStorage.getItem('tasksList');
-      if (!tasks) {
-        localStorage.setItem('tasksList',JSON.stringify([{"title":"title"}]));
-      }*/
+    getTodos(){
+
+// get tasks from local storage
+      let allUserTasks = JSON.parse( localStorage.getItem('tasksList') );
+      let tasksInArray = [];
+        for (let i in allUserTasks) {
+            tasksInArray.push(allUserTasks[i]); // all tasks
+
+// get logined user from local storage
+            let loginedUser = JSON.parse(localStorage.getItem('JustLogInUser'));
+            let loginesInArr = [];
+            for (let j in loginedUser) {
+                loginesInArr.push(loginedUser[j]); // logined user
+
+// check and put tasks in arr for sending to storage
+              let NewChosenTasksInArray = [];
+                if (tasksInArray[i]["userMail"] == loginesInArr[j]['mail']) { // check logined user tasks
+                  NewChosenTasksInArray.push(tasksInArray[i]["task"]);  // put a chosen task from tasklist task6 task7 task8
+
+                  let getChosentasks = JSON.parse(localStorage.getItem('ChosenTasks'));
+                  let getChosenTasksInArray = [];
+                  for (let z in getChosentasks) {
+                    getChosenTasksInArray.push(tasksInArray[z]);
+                  }
+                  getChosenTasksInArray.push(tasksInArray[i]["task"]);
+                  localStorage.setItem("ChosenTasks",JSON.stringify(getChosenTasksInArray));
+                  break;
+                }
+
+            }
+
+        }
+
     },
 
-    /*submitInfo() {
-      let allTasks = JSON.parse(localStorage.getItem('tasksList'));
-      let tasksArray = [];
-      if (this.title!==""){
-        for (let i in allTasks)
-          tasksArray.push(allTasks[i]);
-        let objTasks = {
-          'task': this.title
-        };
-        tasksArray.push(objTasks);
-        localStorage.setItem("tasksList", JSON.stringify(tasksArray));
-        console.log("task added");
-      }
-    },*/
-    /*onSubmit() {
+    submitAnswers(){
       if (this.title.trim()){
         const newTodo = {
           id: Date.now(),
@@ -45,10 +68,13 @@ export default{
         this.$emit('add-todo', newTodo)
         this.title=""
       }
-    }*/
-  }
+    }
+  },
 }
 </script>
+
+
+
 
 <style scoped>
 form{
