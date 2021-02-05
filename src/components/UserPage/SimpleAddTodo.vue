@@ -10,53 +10,52 @@ export default{
   name: 'SimpleAddTodo',
   data() {
     return {
-      title: '',
-    }
-  },
-
-  mounted() {
-    //set to a localstorage chosen tasks
-    let ChosenTasks = localStorage.getItem('ChosenTasks');
-    if (!ChosenTasks) {
-      localStorage.setItem( 'ChosenTasks',JSON.stringify([{'tasks':'tasks'}]) );
+      title: ''
     }
   },
 
   methods: {
     getTodos(){
+    //set to a localstorage chosen tasks
+    let ChosenTasks = localStorage.getItem('ChosenTasks');
+    if (!ChosenTasks) {  let arr = window.localStorage.getItem('ChosenTasks');
+      console.log(arr);
+      localStorage.setItem( 'ChosenTasks',JSON.stringify([{'tasks':'tasks'}]) );
+    }
+    else{
+  // get tasks from local storage
+        let allUserTasks = JSON.parse( localStorage.getItem('tasksList') );
+        let tasksInArray = [];
+          for (let i in allUserTasks) {
+              tasksInArray.push(allUserTasks[i]); // all tasks
 
-// get tasks from local storage
-      let allUserTasks = JSON.parse( localStorage.getItem('tasksList') );
-      let tasksInArray = [];
-        for (let i in allUserTasks) {
-            tasksInArray.push(allUserTasks[i]); // all tasks
+  // get logined user from local storage
+              let loginedUser = JSON.parse(localStorage.getItem('JustLogInUser'));
+              let loginesInArr = [];
+              for (let j in loginedUser) {
+                  loginesInArr.push(loginedUser[j]); // logined user
 
-// get logined user from local storage
-            let loginedUser = JSON.parse(localStorage.getItem('JustLogInUser'));
-            let loginesInArr = [];
-            for (let j in loginedUser) {
-                loginesInArr.push(loginedUser[j]); // logined user
+                  if (tasksInArray[i]["userMail"] == loginesInArr[j]['mail']) { // check logined user tasks
 
-// check and put tasks in arr for sending to storage
-              let NewChosenTasksInArray = [];
-                if (tasksInArray[i]["userMail"] == loginesInArr[j]['mail']) { // check logined user tasks
-                  NewChosenTasksInArray.push(tasksInArray[i]["task"]);  // put a chosen task from tasklist task6 task7 task8
-
-                  let getChosentasks = JSON.parse(localStorage.getItem('ChosenTasks'));
-                  let getChosenTasksInArray = [];
-                  for (let z in getChosentasks) {
-                    getChosenTasksInArray.push(tasksInArray[z]);
+  // adding the tasks to Chosen task
+                    let getChosentaskss = JSON.parse(localStorage.getItem('ChosenTasks'));
+                    let NewChosenTasksInArray = [];
+                    for (let z in getChosentaskss) {
+                      NewChosenTasksInArray.push(getChosentaskss[z]);
+                    }
+                    NewChosenTasksInArray.push(tasksInArray[i]["task"]);
+                    localStorage.setItem("ChosenTasks", JSON.stringify(NewChosenTasksInArray));  // tasks are added
+                  /*localStorage.removeItem("ChosenTasks")*/
                   }
-                  getChosenTasksInArray.push(tasksInArray[i]["task"]);
-                  localStorage.setItem("ChosenTasks",JSON.stringify(getChosenTasksInArray));
-                  break;
-                }
 
-            }
 
-        }
+              }
 
-    },
+          }
+
+    }
+  },
+
 
     submitAnswers(){
       if (this.title.trim()){

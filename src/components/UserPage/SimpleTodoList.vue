@@ -1,21 +1,27 @@
 <template>
   <div>
     <ul>
-      <SimpleTodoItem v-for="(tasksThroughArray, i) in tasksThroughArray"
-                      v-bind:tasksThroughArray="tasksThroughArray" :key="tasksThroughArray.task"
-                      v-bind:index="i"/>
+      <SimpleTodoItem v-for="(newBindTasks, i) in newBindTasks"
+                      v-bind:newBindTasks="newBindTasks"
+                      v-bind:index="i" :key="newBindTasks.newBindTasksID"/>
     </ul>
   </div>
 </template>
+
+
 
 <script>
 import SimpleTodoItem from './SimpleTodoItem'
 export default{
   name: 'SimpleTodoList',
-  props: ["tasksThroughArray"],
   components:{
     SimpleTodoItem
   },
+
+  props:[
+    "newBindTasks",
+  ],
+
 }
 </script>
 

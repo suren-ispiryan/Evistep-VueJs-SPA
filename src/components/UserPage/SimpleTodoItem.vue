@@ -1,15 +1,17 @@
 <template>
   <li>
-		<span v-bind:class="{done: todo.completed}">
-			<input type="checkbox  form-control" v-on:change="todo.completed = !todo.completed">
-			<strong>{{index+1}}</strong>
-			{{todo.title}}
+		<span v-bind:class="{done: newBindTasks.completed}">
+			<strong class="pr-4">{{index+1}}</strong>
+			<input type="checkbox" v-on:change="newBindTasks.completed = !newBindTasks.completed">
+      {{newBindTasks}}
 		</span>
   </li>
 </template>
 
+
+
 <script>
-export default{
+export default {
   name: 'SimpleTodoItem',
 
   data() {
@@ -17,7 +19,24 @@ export default{
       title: 'title'
     }
   },
-  /*get from local storage*/
+
+  props: [
+    "index",
+    "newBindTasks",
+  ],
+
+/*mounted() {
+    if (this.title.trim()){
+      const newBindTasks = {
+        id: Date.now(),
+        title: this.title,
+        completed: false
+      }
+      this.$emit('add-todo', newBindTasks)
+      this.title=""
+    }
+}*/
+
 }
 </script>
 
