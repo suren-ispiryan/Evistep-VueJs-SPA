@@ -21,6 +21,7 @@ import SignIn from "@/components/SignIn/SignIn";
 import LogIn from "@/components/SignIn/LogIn";
 import UserPageComponent from "@/components/UserPage/UserPageComponent";
 import SimplePageComponent from "@/components/UserPage/SimplePageComponent";
+import Progress from "@/components/UserPage/Progress/Progress";
 Vue.use(Router)
 
 const router = new Router({
@@ -48,6 +49,11 @@ const router = new Router({
       path: '/UserPage',
       name: 'SimplePageComponent',
       component: SimplePageComponent
+    },
+    {
+      path: '/UsersProgress',
+      name: 'Progress',
+      component: Progress
     }
   ]
 })

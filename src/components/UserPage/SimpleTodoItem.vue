@@ -2,7 +2,10 @@
   <li>
 		<span v-bind:class="{done: newBindTasks.completed}">
 			<strong class="pr-4">{{index+1}}</strong>
-			<input type="checkbox" v-on:change="newBindTasks.completed = !newBindTasks.completed">
+			<input type="checkbox"
+             v-on:change="newBindTasks.completed = !newBindTasks.completed"
+             v-on:click="disappearSendInfoToAdmin"
+             v-model="choose">
       {{newBindTasks}}
 		</span>
   </li>
@@ -16,7 +19,8 @@ export default {
 
   data() {
     return {
-      title: 'title'
+      title: 'title',
+      choose: ''
     }
   },
 
@@ -25,7 +29,39 @@ export default {
     "newBindTasks",
   ],
 
-/*mounted() {
+  mounted() {
+    let deletedTasksList = localStorage.getItem('deletedTasksList');
+    if (!deletedTasksList) {
+      localStorage.setItem('deletedTasksList',JSON.stringify([{"tasks":"task"}]));
+    }
+  },
+
+  methods: {
+    disappearSendInfoToAdmin() {
+// call chosentasks from chosen tasklist from localstorage
+      let getChosentasks = JSON.parse(localStorage.getItem('ChosenTasks'));
+      let NewChosenTasksInArray = [];
+      let newarray = [];
+      for (let z in getChosentasks) {
+        NewChosenTasksInArray.push(getChosentasks[z]); // all chosen user tasks
+// check clicked tasks
+        if (NewChosenTasksInArray[z] == this.newBindTasks) {
+          newarray.push(NewChosenTasksInArray[z]);
+          let binedTasks = JSON.parse(localStorage.getItem('deletedTasksList'));
+          let NewbinedTasks = [];
+          for (let z in binedTasks) {
+            NewbinedTasks.push(binedTasks[z]); // all chosen user tasks
+          }
+// add new clicked tasks
+          NewbinedTasks.push(newarray);
+// put updated stasks beck to localstorage
+          localStorage.setItem('deletedTasksList', JSON.stringify(NewbinedTasks));
+          break;
+        }
+      }
+    }
+
+    /*mounted() {
     if (this.title.trim()){
       const newBindTasks = {
         id: Date.now(),
@@ -36,7 +72,7 @@ export default {
       this.title=""
     }
 }*/
-
+  }
 }
 </script>
 

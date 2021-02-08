@@ -47,7 +47,7 @@ export default {
         localStorage.setItem('ChosenTasks', JSON.stringify({'ChosenTasks': 'task'}));
       }
 
-      // get all tasks from local storage
+      // get all tasks from locaNewbinedTasksl storage
       let allUserTasks = JSON.parse(localStorage.getItem('tasksList'));
       let tasksInArray = [];
       for (let i in allUserTasks) {

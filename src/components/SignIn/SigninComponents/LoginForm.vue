@@ -31,7 +31,6 @@ export default {
 
   methods: {
     submit() {
-console.log('test')
       let userdata = JSON.parse(localStorage.getItem('Users'));
       let userArray = [];
       for(let i in userdata) {
@@ -42,12 +41,10 @@ console.log('test')
         if (userArray[j]["mail"].includes(this.email) && userArray[j]["password"].includes(this.password)
         && userArray[j]["mail"] == "admin@admin.com" && userArray[j]["password"] == "password"
         && this.email !== "" && this.password !== "" ) {
-          console.log("Admin mail exist");
           this.$router.push('/AdminPage')
         }
         else if ( userArray[j]["mail"].includes(this.email) && userArray[j]["password"].includes(this.password)
         && this.email !== "" && this.password !== "" ) {
-          console.log("User mail exist");
           this.$router.push('/UserPage')
 
         // add login's mail

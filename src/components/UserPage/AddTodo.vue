@@ -1,8 +1,12 @@
 <template>
   <form @submit.prevent="onSubmit">
-    <input type="text" class="form-control" v-model="title" placeholder="write a task">
+    <input type="text" class="form-control" cc placeholder="write a task">
     <input type="email" class="form-control" v-model="userMail" placeholder="user Email">
     <button type="submit"  @click="submitInfo()" class="btn btn-success ml-4">Add Task</button>
+    <button type="button"  @click="progress()" class="btn btn-warning ml-4">
+      <router-link to="/UsersProgress">progress</router-link>
+    </button>
+
   </form>
 </template>
 
@@ -64,6 +68,9 @@ export default{
         this.title="",
         this.userMail=""
       }
+    },
+    progress(){
+
     }
   }
 }
