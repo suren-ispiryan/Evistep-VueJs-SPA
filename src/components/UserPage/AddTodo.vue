@@ -52,14 +52,17 @@ export default{
       }
     },
     onSubmit() {
-      if (this.title.trim()){
+      if (this.title.trim(), this.userMail.trim()){
         const newTodo = {
           id: Date.now(),
           title: this.title,
+          userMail: this.userMail,
           completed: false
         }
+        console.log(newTodo)
         this.$emit('add-todo', newTodo)
-        this.title=""
+        this.title="",
+        this.userMail=""
       }
     }
   }

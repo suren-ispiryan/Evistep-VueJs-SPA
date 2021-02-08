@@ -3,8 +3,9 @@
 		<span v-bind:class="{done: todo.completed}">
 			<input type="checkbox" v-on:change="todo.completed = !todo.completed">
 			<strong>{{index+1}}</strong>
-			{{todo.title}}
-		</span>
+        <span class="taskBox">Task -></span>{{todo.title}}
+        <span class="taskBox">User -></span>{{todo.userMail}}
+      </span>
     <button class="rm" @click="removeItems()" v-on:click="$emit('remove-todo', todo.id)">&times;</button>
   </li>
 </template>
@@ -13,7 +14,8 @@
 export default{
   data() {
     return {
-      title: 'title'
+      title: 'title',
+      userMail: 'userMail'
     }
   },
   methods: {
@@ -28,6 +30,7 @@ export default{
       console.log("task deleted");
     },
   },
+
   props: {
     todo: {
       required: true
@@ -57,5 +60,9 @@ input{
 }
 .done{
   text-decoration: line-through;
+}
+.taskBox{
+  font-weight: bold;
+  color: red;
 }
 </style>

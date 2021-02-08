@@ -20,89 +20,74 @@
 
 
 
+
+
 <script>
 import SimpleTodoList from './SimpleTodoList.vue'
-export default{
+export default {
   name: 'UserPageComponent',
-  components:{
+  components: {
     SimpleTodoList
   },
 
-
-
-
   data() {
     return {
-       newTasks: [], // global variable for users chosen tasks
+      newTasks: [], // global variable for users chosen tasks
     }
   },
 
   methods: {
-/*/!*page component>>>>>>>>>>>>>>>>>>>>>*!/
-    submitAnswers(){
-      if (this.title.trim()){
-        const newTodo = {
-          id: Date.now(),
-          title: this.title,
-          completed: false
-        }
-        this.$emit('add-todo', newTodo)
-        this.title=""
-      }
-    },*/
-/*pageComponent<<<<<<<<<<<<<<<<<<<<<<*/
-
-/*Add>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    getTodos(){
-      //set to a localstorage chosen tasks
+    /*Add>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+    getTodos() {
+      //set into localstorage mail chosen tasks table
       let ChosenTasks = localStorage.getItem('ChosenTasks');
       if (!ChosenTasks) {
         let arr = window.localStorage.getItem('ChosenTasks');
         console.log(arr);
-        localStorage.setItem( 'ChosenTasks',JSON.stringify({'tasks': 'task'}) );
+        localStorage.setItem('ChosenTasks', JSON.stringify({'ChosenTasks': 'task'}));
       }
 
-        // get tasks from local storage
-        let allUserTasks = JSON.parse( localStorage.getItem('tasksList') );
-        let tasksInArray = [];
-        for (let i in allUserTasks) {
-          tasksInArray.push(allUserTasks[i]); // all tasks
+      // get all tasks from local storage
+      let allUserTasks = JSON.parse(localStorage.getItem('tasksList'));
+      let tasksInArray = [];
+      for (let i in allUserTasks) {
+        tasksInArray.push(allUserTasks[i]); // all tasks
 
-          // get logined user from local storage
-          let loginedUser = JSON.parse(localStorage.getItem('JustLogInUser'));
-          let loginesInArr = [];
-          for (let j in loginedUser) {
-            loginesInArr.push(loginedUser[j]); // logined user
+        // get logined user from local storage
+        let loginedUser = JSON.parse(localStorage.getItem('JustLogInUser'));
+        let loginesInArr = [];
+        for (let j in loginedUser) {
+          loginesInArr.push(loginedUser[j]); // logined user
 
-            if (tasksInArray[i]["userMail"] == loginesInArr[j]['mail']) { // check logined user tasks
+          if (tasksInArray[i]["userMail"] == loginesInArr[j]['mail']) { // check logined user tasks
 
-              // adding the tasks to Chosen task
-              let getChosentaskss = JSON.parse(localStorage.getItem('ChosenTasks'));
-              let NewChosenTasksInArray = [];
-              for (let z in getChosentaskss) {
-                NewChosenTasksInArray.push(getChosentaskss[z]);
+            // adding the tasks to Chosen task
+            let getChosentaskss = JSON.parse(localStorage.getItem('ChosenTasks'));
+            let NewChosenTasksInArray = [];
+            for (let z in getChosentaskss) {
+              NewChosenTasksInArray.push(getChosentaskss[z]);
+            }
+            NewChosenTasksInArray.push(tasksInArray[i]["task"]);
+            localStorage.setItem("ChosenTasks", JSON.stringify(NewChosenTasksInArray));  // mail chosen tasks are added
+            /*localStorage.removeItem("ChosenTasks")*/
+
+
+            let transport = JSON.parse(localStorage.getItem('ChosenTasks'));  // getting ready for sending to child
+            let Newtransport = [];
+            for (let z in transport) {
+              /*refresh>>>>>>>>>>>>>>>>>>*/
+              if (Newtransport.includes(transport[z])){
+                  continue;
               }
-              NewChosenTasksInArray.push(tasksInArray[i]["task"]);
-              localStorage.setItem("ChosenTasks", JSON.stringify(NewChosenTasksInArray));  // tasks are added
-              /*localStorage.removeItem("ChosenTasks")*/
-
-              let transport = JSON.parse(localStorage.getItem('ChosenTasks'));
-              let Newtransport = [];
-              for (let z in transport) {
+              else{
                 Newtransport.push(transport[z]);
                 this.newTasks = Newtransport;
               }
-
             }
           }
         }
-
-        console.log(this.newTasks)
-
       }
-
-/*Add<<<<<<<<<<<<<<<<<<<<*/
-
+    },
   }
 }
 </script>

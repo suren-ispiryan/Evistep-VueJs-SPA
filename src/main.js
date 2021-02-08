@@ -45,7 +45,7 @@ const router = new Router({
       component: UserPageComponent
     },
     {
-      path: '/simplePage',
+      path: '/UserPage',
       name: 'SimplePageComponent',
       component: SimplePageComponent
     }

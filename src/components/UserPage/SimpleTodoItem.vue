@@ -54,5 +54,6 @@ input{
 }
 .done{
   text-decoration: line-through;
+  background-color: greenyellow;
 }
 </style>

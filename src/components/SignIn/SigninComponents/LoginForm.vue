@@ -48,7 +48,7 @@ console.log('test')
         else if ( userArray[j]["mail"].includes(this.email) && userArray[j]["password"].includes(this.password)
         && this.email !== "" && this.password !== "" ) {
           console.log("User mail exist");
-          this.$router.push('/simplePage')
+          this.$router.push('/UserPage')
 
         // add login's mail
           localStorage.setItem('JustLogInUser',JSON.stringify([{'mail': this.email}]));
