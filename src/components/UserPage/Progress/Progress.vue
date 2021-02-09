@@ -11,6 +11,7 @@
     <li>
       <span><h3>index</h3></span>
       <span><h3>Task</h3></span>
+      <span><h3>UserMail</h3></span>
       <span><h3>Status</h3></span>
     </li>
     <hr>
@@ -19,7 +20,8 @@
                   v-bind:exportArr="exportArr"
                   v-bind:i="i"
                   v-bind:userEmail="userEmail"
-                  v-bind:key="exportArr"/>
+                  v-bind:key="exportArr"
+                  v-bind:status="status"/>
   </ul>
 </template>
 
@@ -39,7 +41,8 @@ name: "Progress",
     return {
       i: "",
       userEmail: 'userEmail',
-      exportArr: ""
+      exportArr: "",
+      status: ""
     }
   },
 
@@ -57,14 +60,22 @@ name: "Progress",
          let binedTasks = JSON.parse(localStorage.getItem('deletedTasksList'));
          let NewbinedTasks = []; console.log(this.exportArr)
          for (let z in binedTasks) {
-           NewbinedTasks.push(binedTasks[z]); // chosen user done tasks
+           NewbinedTasks.push(binedTasks[z]); // choNewbinedTaskssen user done tasks
+
+
            exportArr.push(tasksInArray[i]["task"]);
-           
-            this.exportArr=exportArr;
+           this.exportArr = exportArr;
+
+           if (allUserTasks[i]["task"] == NewbinedTasks[i]){
+             this.status = "done";
+           }else {
+             this.status = "undone";
+           }
+
            break;
-       }
-       console.log(this.exportArr)
+         }
       }
+
      }
    }
   }
@@ -102,7 +113,10 @@ input{
   text-align: center;
 }
 span{
-  width: 30%;
+  width: 24%;
   text-align: center;
+}
+h3{
+  color: red;
 }
 </style>

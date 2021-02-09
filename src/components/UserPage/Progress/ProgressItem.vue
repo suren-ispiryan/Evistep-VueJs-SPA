@@ -4,6 +4,7 @@
       <span>{{ (this.i)+1 }}</span>
       <span>{{ this.exportArr }}</span>
       <span>{{ this.userEmail }}</span>
+      <span>{{ this.status }}</span>
     </li>
     <hr>
   </div>
@@ -17,7 +18,8 @@ export default {
   props: [
     "userEmail",
     "exportArr",
-      "i"
+      "i",
+      "status"
   ]
 }
 </script>
@@ -33,6 +35,6 @@ li{
 }
 span{
   text-align: center;
-  width: 30%;
+  width: 24%;
 }
 </style>

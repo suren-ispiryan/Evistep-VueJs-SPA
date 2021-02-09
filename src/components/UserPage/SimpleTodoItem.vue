@@ -32,7 +32,7 @@ export default {
   mounted() {
     let deletedTasksList = localStorage.getItem('deletedTasksList');
     if (!deletedTasksList) {
-      localStorage.setItem('deletedTasksList',JSON.stringify([{"tasks":"task"}]));
+      localStorage.setItem('deletedTasksList',JSON.stringify([{"tasks":this.task}]));
     }
   },
 
